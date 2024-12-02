@@ -4,12 +4,12 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> +1111111111</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> loivanam@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> 123 cao lỗ</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+						<li><a href="#"><i class="fa fa-dollar"></i> đồng</a></li>
 						<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 					</ul>
 				</div>
@@ -37,12 +37,12 @@
 							<div class="header-search">
 								<form>
 									<select class="input-select">
-										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
+										<option value="0">loại sản phẩm</option>
+										<option value="1">loại 01</option>
+										<option value="1">loại 02</option>
 									</select>
 									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
+									<button class="search-btn">tìm</button>
 								</form>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 								<div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
+										<span>giở hàng</span>
 										<div class="qty">3</div>
 									</a>
 									<div class="cart-dropdown">
@@ -74,7 +74,7 @@
 												<div class="product-img">
 													<img src="./img/product01.png" alt="">
 												</div>
-												<div class="product-body">
+												<div class="product-body">  
 													<h3 class="product-name"><a href="#">product name goes here</a></h3>
 													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
 												</div>
@@ -123,3 +123,57 @@
 			<!-- /MAIN HEADER -->
 		</header>
 		<!-- /HEADER -->
+
+        <!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- shop -->
+					<div class="col-md-4 col-xs-6">
+						<div class="shop">
+							<div class="shop-img">
+								<img src="./img/shop01.png" alt="">
+							</div>
+							<div class="shop-body">
+								<h3>Laptop<br>Collection</h3>
+								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-4 col-xs-6">
+						<div class="shop">
+							<div class="shop-img">
+								<img src="./img/shop03.png" alt="">
+							</div>
+							<div class="shop-body">
+								<h3>Accessories<br>Collection</h3>
+								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-4 col-xs-6">
+						<div class="shop">
+							<div class="shop-img">
+								<img src="./img/shop02.png" alt="">
+							</div>
+							<div class="shop-body">
+								<h3>Cameras<br>Collection</h3>
+								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /shop -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
