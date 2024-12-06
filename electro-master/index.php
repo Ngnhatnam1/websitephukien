@@ -1,3 +1,6 @@
+<?php
+	include_once "model/connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -75,36 +78,52 @@
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
 										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product01.png" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">loại</p>
-												<h3 class="product-name"><a href="#">tên sản phẩm ở đây</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>
-										</div>
+										<?php
+											$sql = "SELECT sanpham.tensanpham,sanpham.gia,sanpham.linkanh,Category.tenloai FROM sanpham JOIN new ON sanpham.masp = new.masp
+												JOIN Category ON sanpham.maloai =Category.maloai
+													";
+											$result = $conn->query($sql);
+											if ($result->num_rows > 0) {
+												while ($row = $result->fetch_assoc()) {
+													echo '<div class="product">
+															<div class="product-img">
+																<img src="' . htmlspecialchars($row['linkanh']) . '" alt="' . htmlspecialchars($row['tensanpham']) . '">
+																<div class="product-label">
+																	<!-- Vị trí ghi giảm giá (nếu có) -->
+																</div>
+															</div>
+															<div class="product-body">
+																<p class="product-category">' . htmlspecialchars($row['tenloai']) . '</p>
+																<h3 class="product-name"><a href="#">' . htmlspecialchars($row['tensanpham']) . '</a></h3>
+																<h4 class="product-price">$' . number_format($row['gia'], 2) . '</h4>
+																<div class="product-rating">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																</div>
+																<div class="product-btns">
+																	<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+																	<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+																	<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+																</div>
+															</div>
+															<div class="add-to-cart">
+																<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+															</div>
+														</div>';
+												}
+											} else {
+												echo "Không có sản phẩm nào!";
+											}
+											
+											// Đóng kết nối
+											
+										?>						
 										<!-- /product -->
+
+										
 
 										
 									</div>
@@ -198,38 +217,55 @@
 								<!-- tab -->
 								<div id="tab2" class="tab-pane fade in active">
 									<div class="products-slick" data-nav="#slick-nav-2">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="./img/product06.png" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Category</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-											</div>
-										</div>
-										<!-- /product -->
 
+										<!-- product -->
+										<?php
+											if ($_SERVER["REQUEST_METHOD"] == "POST") {
+												if (isset($_POST['masp'])) {
+													$masp = $_POST['masp'];
+											$sql = "SELECT sanpham.tensanpham,sanpham.gia,sanpham.linkanh,Category.tenloai FROM sanpham JOIN topcelling ON sanpham.masp = topcelling.masp
+												JOIN Category ON sanpham.maloai =Category.maloai";
+											$result = $conn->query($sql);
+											if ($result->num_rows > 0) {
+												while ($row = $result->fetch_assoc()) {
+													echo '<div class="product">
+															<div class="product-img">
+																<img src="' . htmlspecialchars($row['linkanh']) . '" alt="' . htmlspecialchars($row['tensanpham']) . '">
+																<div class="product-label">
+																	<!-- Vị trí ghi giảm giá (nếu có) -->
+																</div>
+															</div>
+															<div class="product-body">
+																<p class="product-category">' . htmlspecialchars($row['tenloai']) . '</p>
+																<h3 class="product-name"><a href="product.php">' . htmlspecialchars($row['tensanpham']) . '</a></h3>
+																<h4 class="product-price">$' . number_format($row['gia'], 2) . '</h4>
+																<div class="product-rating">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																</div>
+																<div class="product-btns">
+																	<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+																	<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+																	<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+																</div>
+															</div>
+															<div class="add-to-cart">
+																<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+															</div>
+														</div>';
+												}
+											} else {
+												echo "Không có sản phẩm nào!";
+											}
+											}
+										}
+											// Đóng kết nối
+											
+										?>						
+										<!-- /product -->
 
 									</div>
 									<div id="slick-nav-2" class="products-slick-nav"></div>

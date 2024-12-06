@@ -1,3 +1,6 @@
+<?php
+	include_once "model/connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -50,55 +53,23 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+
 					<!-- Product main img -->
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
 								<img src="./img/product01.png" alt="">
 							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
-							</div>
 						</div>
 					</div>
 					<!-- /Product main img -->
 
-					<!-- Product thumb imgs -->
-					<div class="col-md-2  col-md-pull-5">
-						<div id="product-imgs">
-							<div class="product-preview">
-								<img src="./img/product01.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product03.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product06.png" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="./img/product08.png" alt="">
-							</div>
-						</div>
-					</div>
 					<!-- /Product thumb imgs -->
 					<?php
 						
 					?>
 					<!-- Product details -->
 					<div class="col-md-5">
-						<div class="product-details">
 							<h2 class="product-name">tên sản phẩm ở đây</h2>
 							<div>
 								<div class="product-rating">
@@ -110,28 +81,17 @@
 								</div>
 							</div>
 							<div>
-								<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
+								<h3 class="product-price">$980.00 </h3>
 								<span class="product-available">In Stock</span>
 							</div>
 							<div class="product-options">
 
 								<label>
-									Color
-									<select class="input-select">
-										<option value="0">Red</option>
-									</select>
+									Color màu ở đây
 								</label>
 							</div>
 
 							<div class="add-to-cart">
-								<div class="qty-label">
-									Qty
-									<div class="input-number">
-										<input type="number">
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
-									</div>
-								</div>
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng</button>
 							</div>
 
@@ -142,9 +102,9 @@
 
 							<ul class="product-links">
 								<li>loại:</li>
-								<li><a href="#">tai nghe </a></li>
+								<li><a href="#">tên loại ở đây </a></li>
 							</ul>
-
+							
 							<ul class="product-links">
 								<li>Share:</li>
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -156,7 +116,70 @@
 						</div>
 					</div>
 					<!-- /Product details -->
+					<!-- lấy dư liệu từ port -->
+					<?php
+						if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['masp'])) {
+							$masp = $_POST['masp'];
 
+							// Truy vấn dữ liệu sản phẩm từ cơ sở dữ liệu
+							$sql = "SELECT sanpham.tensanpham, sanpham.gia, sanpham.linkanh, Category.tenloai 
+									FROM sanpham 
+									JOIN Category ON sanpham.maloai = Category.maloai 
+									join color on sanpham.macolor = color.macolor
+									WHERE sanpham.masp = '$masp'";
+							if ($result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()) {
+									echo'<div class="col-md-5">
+						<div class="product-details">
+							<h2 class="product-name">' . htmlspecialchars($row['tensanpham']) .'</h2>
+							<div>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-o"></i>
+								</div>
+							</div>
+							<div>
+								<h3 class="product-price">' . number_format($row['gia'], 2) . ' </h3>
+								<span class="product-available">In Stock</span>
+							</div>
+							<div class="product-options">
+
+								<label>
+									Color ' . htmlspecialchars($row['co']) . '
+								</label>
+							</div>
+
+							<div class="add-to-cart">
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng</button>
+							</div>
+
+							<ul class="product-btns">
+								<li><a href="#"><i class="fa fa-heart-o"></i> thêm vào danh sách mong muốn</a></li>
+								<li><a href="#"><i class="fa fa-exchange"></i> thêm vào để so sánh</a></li>
+							</ul>
+
+							<ul class="product-links">
+								<li>loại:</li>
+								<li><a href="#">' . htmlspecialchars($row['tenloai']) . ' </a></li>
+							</ul>
+							
+							<ul class="product-links">
+								<li>Share:</li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+							</ul>
+
+						</div>
+					</div>';
+								}
+							}
+						}
+					?>
 					<!-- Product tab -->
 					<div class="col-md-12">
 						<div id="product-tab">
@@ -212,7 +235,7 @@
 
 					<div class="col-md-12">
 						<div class="section-title text-center">
-							<h3 class="title">Related Products</h3>
+							<h3 class="title">sản  phẩm tương tự</h3>
 						</div>
 					</div>
 
