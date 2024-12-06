@@ -55,13 +55,13 @@
 				<div class="row">
 
 					<!-- Product main img -->
-					<div class="col-md-5 col-md-push-2">
+					<!-- <div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
 								<img src="./img/product01.png" alt="">
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- /Product main img -->
 
 					<!-- /Product thumb imgs -->
@@ -69,7 +69,7 @@
 						
 					?>
 					<!-- Product details -->
-					<div class="col-md-5">
+					<!-- <div class="col-md-5">
 							<h2 class="product-name">tên sản phẩm ở đây</h2>
 							<div>
 								<div class="product-rating">
@@ -114,7 +114,7 @@
 							</ul>
 
 						</div>
-					</div>
+					</div> -->
 					<!-- /Product details -->
 					<!-- lấy dư liệu từ port -->
 					<?php
@@ -175,7 +175,7 @@
 							</ul>
 
 						</div>
-					</div>';
+						</div>';
 								}
 							}
 						}

@@ -220,9 +220,7 @@
 
 										<!-- product -->
 										<?php
-											if ($_SERVER["REQUEST_METHOD"] == "POST") {
-												if (isset($_POST['masp'])) {
-													$masp = $_POST['masp'];
+											
 											$sql = "SELECT sanpham.tensanpham,sanpham.gia,sanpham.linkanh,Category.tenloai FROM sanpham JOIN topcelling ON sanpham.masp = topcelling.masp
 												JOIN Category ON sanpham.maloai =Category.maloai";
 											$result = $conn->query($sql);
@@ -230,7 +228,7 @@
 												while ($row = $result->fetch_assoc()) {
 													echo '<div class="product">
 															<div class="product-img">
-																<img src="' . htmlspecialchars($row['linkanh']) . '" alt="' . htmlspecialchars($row['tensanpham']) . '">
+																<img src="' . htmlspecialchars($row['linkanh']) . '" alt="">
 																<div class="product-label">
 																	<!-- Vị trí ghi giảm giá (nếu có) -->
 																</div>
@@ -260,8 +258,7 @@
 											} else {
 												echo "Không có sản phẩm nào!";
 											}
-											}
-										}
+											 
 											// Đóng kết nối
 											
 										?>						
