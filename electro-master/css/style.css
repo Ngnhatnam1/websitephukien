@@ -2188,3 +2188,277 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+
+
+/*------------------------------ ADMIN / LOGIN----------------------------------*/
+ /*-- Admin Page --*/
+/* Wrapper chứa cả sidebar và nội dung */
+.wrapper {
+  display: flex;
+}
+
+/* Thanh sidebar */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #1c6967;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+}
+.sidebar h3{
+  font-size: 14pt;
+  font-style: bold;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+.sidebar ul li a{
+  font-size: 12pt;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff6f61;  /* Màu chủ đạo */
+}
+
+.sidebar h4 {
+  margin-top: 20px;
+  color: #ff6f61;
+}
+
+/* Tiêu đề giao diện Admin */
+.content h1 {
+  text-align: center;
+  color: #ff6f61;
+  font-size: 36px;
+  background-color: #fff;
+  padding: 10px 0;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng cho button đóng sidebar */
+.close-btn {
+  background-color: #111;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* Nội dung chính */
+.content {
+  margin-left: 20px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Hiệu ứng sidebar mở */
+.sidebar.open {
+  left: 0;
+}
+
+/* Dropdown style */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  max-height: 200px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Tạo khoảng cách giữa các ô */
+.account-info-item {
+  margin-bottom: 10px;
+}
+
+.account-info-item strong {
+  color: #ff6f61;
+}
+
+/* Khung bảng hiển thị thông tin */
+#account-info {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #ff6f61;
+  color: white;
+  text-align: left;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+/* Hiệu ứng hover cho bảng */
+tr:hover {
+  background-color: #f1f1f1;
+}
+.content h4{
+  font-size: 18pt;
+
+}
+.content table tbody tr th{
+  font-size: 12pt;
+}
+.content table tbody tr td{
+  font-size: 10pt;
+}
+
+
+/*--- lOGIN ---*/
+/*-- Phần của Login / Register --*/
+.form-container{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  padding-bottom: 60px;
+  background-color: #eee;
+}
+.form-container form{
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0, .1);
+  background: #fff;
+  text-align: center;
+  width: 500px;
+}
+
+.form-container form h3{
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #333;
+}
+.form-container form input, .form-container form select{
+  width: 90%;
+  padding: 10px 15px;
+  font-size: 20px; 
+  margin: 8px;
+  background: #eee ;
+  border-radius: 5px;
+}
+
+.form-container form select option{
+  background: #fff;
+}
+
+.form-container form .form-btn{
+  background: #fbd0d9;
+  color: crimson;
+  text-transform: capitalize;
+  font-size: 20px;
+  cursor: pointer;
+}
+.form-container form .form-btn:hover{
+  background: crimson;
+  color: #fff;
+}
+
+.form-container form p{
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
+
+}
+.form-container form p a{
+  color: crimson;
+}
+
+.form-container form .error-msg{
+  margin: 10px 0 ;
+  display: block;
+  background: crimson;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+
+
+.logout-btn {
+  position: fixed;
+  bottom: 20px;  /* Khoảng cách từ dưới màn hình */
+  right: 20px;   /* Khoảng cách từ bên phải màn hình */
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer;
+  border-radius: 5px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng đổ cho nút */
+}
+
+.logout-btn:hover {
+  background-color: #a83528; /* Màu nền khi hover */
+}
