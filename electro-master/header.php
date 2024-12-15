@@ -27,7 +27,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="index.php" class="logo">
-									<img src="./img/logo.png" alt="">
+									<a href="index.php"><img src="./img/logo.png" alt=""></a>
 								</a>
 							</div>
 						</div>
